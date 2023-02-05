@@ -5,7 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev": "run-pty % npm run dev:11ty % npm run dev:tailwind",
+    "dev:11ty": "eleventy --serve",
+    "dev:tailwind": "postcss -w main.css -o _site/main.css",
+    "build": "npm run build:tailwind && npm run build:11ty",
+    "build:11ty": "eleventy",
+    "build:tailwind": "postcss main.css -o _site/main.css",
+    "check": "npm-run-all check:*",
+    "check:format": "prettier --check .",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
