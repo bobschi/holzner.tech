@@ -1,16 +1,15 @@
-# This workflow will do a clean installation of node dependencies, and the suite of checks on the package. 
+# This workflow will do a clean installation of node dependencies, and the suite of checks on the package.
 
 name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   checks:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -18,11 +17,11 @@ jobs:
         node-version: [19.x]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run check
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm run check
