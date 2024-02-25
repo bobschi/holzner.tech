@@ -34,7 +34,7 @@
         };
 
         devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [ hugo ];
+          buildInputs = with pkgs; [ hugo pre-commit ];
         };
       });
 }
